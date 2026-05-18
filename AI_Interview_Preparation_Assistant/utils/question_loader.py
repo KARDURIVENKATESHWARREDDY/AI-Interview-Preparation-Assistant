@@ -23,6 +23,10 @@ def load_questions(csv_path: str | Path | None = None) -> pd.DataFrame:
         df["keywords"] = ""
     else:
         df["keywords"] = df["keywords"].fillna("").astype(str).str.strip()
+    if "id" not in df.columns:
+        df.insert(0, "id", range(1, len(df) + 1))
+    else:
+        df["id"] = pd.to_numeric(df["id"], errors="coerce").fillna(0).astype(int)
     return df.dropna(subset=["question"]).reset_index(drop=True)
 
 

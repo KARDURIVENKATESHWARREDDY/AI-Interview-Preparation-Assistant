@@ -1,0 +1,10 @@
+{
+  "buildCommand": "node scripts/build-data.mjs",
+  "outputDirectory": "public",
+  "framework": null,
+  "functions": {
+    "api/**/*.js": {
+      "maxDuration": 60
+    }
+  }
+}

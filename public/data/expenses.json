@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "username": "demo",
+    "title": "Monthly rent",
+    "amount": 850,
+    "category": "Bills",
+    "expense_date": "2026-05-01",
+    "notes": "Apartment"
+  },
+  {
+    "id": 2,
+    "username": "demo",
+    "title": "Grocery shopping",
+    "amount": 72.5,
+    "category": "Food",
+    "expense_date": "2026-05-10",
+    "notes": "Weekly groceries"
+  },
+  {
+    "id": 3,
+    "username": "demo",
+    "title": "Bus pass",
+    "amount": 45,
+    "category": "Transport",
+    "expense_date": "2026-05-05",
+    "notes": ""
+  }
+]

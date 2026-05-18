@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Interview Preparation Assistant</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div id="login-screen" class="screen">
+    <div class="card auth-card">
+      <h1>AI Interview Prep</h1>
+      <p>Sign in to continue</p>
+      <input id="login-user" type="text" placeholder="Username (demo)" />
+      <input id="login-pass" type="password" placeholder="Password (demo123)" />
+      <button id="login-btn" class="btn primary">Sign in</button>
+      <p id="login-error" class="error hidden"></p>
+      <p class="hint">Demo: demo / demo123</p>
+    </div>
+  </div>
+
+  <div id="app-screen" class="screen hidden">
+    <header>
+      <h1>AI Interview Preparation Assistant</h1>
+      <p id="user-label"></p>
+      <button id="logout-btn" class="btn ghost">Sign out</button>
+    </header>
+
+    <nav class="tabs">
+      <button data-tab="practice" class="tab active">Practice</button>
+      <button data-tab="expenses" class="tab">Expense Tracker</button>
+    </nav>
+
+    <section id="practice-panel" class="panel">
+      <div class="card">
+        <span id="q-meta" class="badge"></span>
+        <p id="q-text" class="question"></p>
+        <button id="new-q-btn" class="btn">New question</button>
+      </div>
+      <textarea id="answer" rows="8" placeholder="Type your answer…"></textarea>
+      <button id="submit-answer" class="btn primary">Submit for feedback</button>
+      <div id="feedback" class="card hidden"></div>
+    </section>
+
+    <section id="expenses-panel" class="panel hidden">
+      <div class="metrics" id="exp-metrics"></div>
+      <div class="subtabs">
+        <button data-exp="read" class="subtab active">Read</button>
+        <button data-exp="create" class="subtab">Create</button>
+        <button data-exp="update" class="subtab">Update</button>
+        <button data-exp="delete" class="subtab">Delete</button>
+        <button data-exp="ai" class="subtab">AI insights</button>
+      </div>
+      <div id="exp-content" class="card"></div>
+    </section>
+  </div>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

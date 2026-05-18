@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "category": "Behavioral",
+    "difficulty": "Easy",
+    "question": "Tell me about yourself.",
+    "keywords": "background,experience,skills,strengths,career"
+  },
+  {
+    "id": 2,
+    "category": "Behavioral",
+    "difficulty": "Easy",
+    "question": "Why do you want to work here?",
+    "keywords": "company,role,values,mission,fit"
+  },
+  {
+    "id": 3,
+    "category": "Behavioral",
+    "difficulty": "Medium",
+    "question": "Describe a time you handled a conflict at work.",
+    "keywords": "situation,conflict,communication,resolution,outcome"
+  },
+  {
+    "id": 4,
+    "category": "Behavioral",
+    "difficulty": "Medium",
+    "question": "Tell me about a project you are proud of.",
+    "keywords": "project,role,impact,challenge,result"
+  },
+  {
+    "id": 5,
+    "category": "Behavioral",
+    "difficulty": "Hard",
+    "question": "Describe a failure and what you learned from it.",
+    "keywords": "failure,mistake,lesson,improvement,accountability"
+  },
+  {
+    "id": 6,
+    "category": "Technical",
+    "difficulty": "Easy",
+    "question": "What is the difference between a list and a tuple in Python?",
+    "keywords": "mutable,immutable,list,tuple,python"
+  },
+  {
+    "id": 7,
+    "category": "Technical",
+    "difficulty": "Medium",
+    "question": "Explain how HTTP request/response works.",
+    "keywords": "request,response,status,headers,client,server"
+  },
+  {
+    "id": 8,
+    "category": "Technical",
+    "difficulty": "Medium",
+    "question": "What is time complexity and why does it matter?",
+    "keywords": "big-o,algorithm,efficiency,scale,performance"
+  },
+  {
+    "id": 9,
+    "category": "Technical",
+    "difficulty": "Hard",
+    "question": "How would you design a URL shortener?",
+    "keywords": "hash,database,cache,scale,redirect,api"
+  },
+  {
+    "id": 10,
+    "category": "Technical",
+    "difficulty": "Hard",
+    "question": "Explain database indexing and when you would use it.",
+    "keywords": "index,query,b-tree,performance,lookup"
+  },
+  {
+    "id": 11,
+    "category": "HR",
+    "difficulty": "Easy",
+    "question": "What are your salary expectations?",
+    "keywords": "range,market,research,flexible,compensation"
+  },
+  {
+    "id": 12,
+    "category": "HR",
+    "difficulty": "Medium",
+    "question": "Where do you see yourself in five years?",
+    "keywords": "growth,goals,skills,leadership,career"
+  },
+  {
+    "id": 13,
+    "category": "HR",
+    "difficulty": "Medium",
+    "question": "Why are you leaving your current role?",
+    "keywords": "growth,opportunity,positive,transition,next"
+  }
+]

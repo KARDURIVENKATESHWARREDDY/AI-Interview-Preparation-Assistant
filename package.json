@@ -1,0 +1,9 @@
+{
+  "name": "ai-interview-prep-vercel",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@google/genai": "^1.52.0"
+  }
+}

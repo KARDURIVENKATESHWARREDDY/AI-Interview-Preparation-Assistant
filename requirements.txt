@@ -1,0 +1,3 @@
+# Python dependencies for local development only
+# Located in AI_Interview_Preparation_Assistant/requirements.txt
+

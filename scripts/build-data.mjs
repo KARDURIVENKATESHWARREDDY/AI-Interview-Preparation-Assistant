@@ -1,11 +1,21 @@
 /** Copy CSV data to public/data/*.json for static + API use on Vercel */
-import { readFileSync, mkdirSync, writeFileSync } from "fs";
+import { readFileSync, mkdirSync, writeFileSync, existsSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const src = join(root, "AI_Interview_Preparation_Assistant", "data");
 const dest = join(root, "public", "data");
+
+// Verify source files exist
+if (!existsSync(join(src, "questions.csv"))) {
+  console.error(`ERROR: questions.csv not found at ${join(src, "questions.csv")}`);
+  process.exit(1);
+}
+if (!existsSync(join(src, "expenses.csv"))) {
+  console.error(`ERROR: expenses.csv not found at ${join(src, "expenses.csv")}`);
+  process.exit(1);
+}
 
 function parseCsv(text) {
   const lines = text.trim().split(/\r?\n/);
@@ -37,20 +47,27 @@ function parseCsv(text) {
   });
 }
 
-mkdirSync(dest, { recursive: true });
+try {
+  mkdirSync(dest, { recursive: true });
 
-for (const name of ["questions", "expenses"]) {
-  const csv = readFileSync(join(src, `${name}.csv`), "utf8");
-  writeFileSync(join(dest, `${name}.json`), JSON.stringify(parseCsv(csv), null, 2));
+  for (const name of ["questions", "expenses"]) {
+    const csv = readFileSync(join(src, `${name}.csv`), "utf8");
+    writeFileSync(join(dest, `${name}.json`), JSON.stringify(parseCsv(csv), null, 2));
+  }
+
+  writeFileSync(
+    join(dest, "users.json"),
+    JSON.stringify(
+      { demo: { password: "demo123" }, admin: { password: "admin123" } },
+      null,
+      2
+    )
+  );
+
+  console.log("✓ Built public/data/*.json for Vercel");
+  process.exit(0);
+} catch (error) {
+  console.error("Build failed:", error.message);
+  console.error(error);
+  process.exit(1);
 }
-
-writeFileSync(
-  join(dest, "users.json"),
-  JSON.stringify(
-    { demo: { password: "demo123" }, admin: { password: "admin123" } },
-    null,
-    2
-  )
-);
-
-console.log("Built public/data/*.json for Vercel");

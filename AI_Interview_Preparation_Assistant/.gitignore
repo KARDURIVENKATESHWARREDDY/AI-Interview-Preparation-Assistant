@@ -3,3 +3,4 @@ __pycache__/
 .streamlit/secrets.toml
 data/users.json
 .env
+node_modules/

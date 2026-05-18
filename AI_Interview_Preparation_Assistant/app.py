@@ -496,7 +496,7 @@ def render_expense_tab() -> None:
 
     with crud_tabs[4]:
         st.markdown("### AI spending insights (Google GenAI SDK)")
-        st.caption("Powered by `google-genai` SDK. Set `GOOGLE_API_KEY` in secrets or environment.")
+        st.caption("Powered by `@google/genai` (npm) or `google-genai` (Python). Set `GOOGLE_API_KEY`.")
         df = list_expenses(username)
         if st.button("Analyze my expenses", type="primary"):
             with st.spinner("Running GenAI SDK…"):

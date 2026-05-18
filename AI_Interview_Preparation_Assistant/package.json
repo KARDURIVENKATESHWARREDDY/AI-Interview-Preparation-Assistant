@@ -1,0 +1,12 @@
+{
+  "name": "ai-interview-prep-assistant",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "analyze-expenses": "node scripts/analyze_expenses.mjs"
+  },
+  "dependencies": {
+    "@google/genai": "^1.52.0"
+  }
+}

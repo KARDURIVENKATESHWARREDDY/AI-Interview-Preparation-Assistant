@@ -10,9 +10,11 @@ from utils.nlp_engine import (
     ensure_nltk_data,
     keyword_coverage,
     lexical_diversity,
+    question_expansion,
     readability_scores,
     relevance_score,
     sentiment_analysis,
+    star_structure_score,
 )
 
 
@@ -51,7 +53,8 @@ def evaluate_answer(
             nlp_metrics={},
         )
 
-    rel = relevance_score(question, answer)
+    rel = relevance_score(question_expansion(question, keywords), answer)
+    star = star_structure_score(answer)
     kw_cov = keyword_coverage(keywords, answer)
     sentiment = sentiment_analysis(answer)
     readability = readability_scores(answer)
@@ -69,16 +72,17 @@ def evaluate_answer(
         "flesch_reading_ease": readability["flesch_reading_ease"],
         "grade_level": readability["grade_level"],
         "word_count": words,
+        "star_score": round(star * 100, 1),
         **entities,
     }
 
     # Relevance (TF-IDF question–answer similarity)
-    if rel >= 0.25:
+    if rel >= 0.18:
         points += 18
         strengths.append(
             f"Answer is relevant to the question (NLP similarity: {nlp_metrics['relevance']}%)."
         )
-    elif rel >= 0.12:
+    elif rel >= 0.08:
         points += 10
         improvements.append("Tie your answer more directly to what was asked.")
     else:
@@ -159,7 +163,7 @@ def evaluate_answer(
 
     q_lower = question.lower()
     if any(k in q_lower for k in ("conflict", "failure", "challenge", "proud", "time you")):
-        if re.search(r"\b(result|outcome|learned|impact)\b", answer, re.I):
+        if star >= 0.5 or re.search(r"\b(result|outcome|learned|impact)\b", answer, re.I):
             points += 8
             strengths.append("Addresses outcome or learning (STAR-friendly).")
         else:

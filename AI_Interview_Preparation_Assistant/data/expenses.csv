@@ -1,0 +1,4 @@
+id,username,title,amount,category,expense_date,notes
+1,demo,Monthly rent,850.0,Bills,2026-05-01,Apartment
+2,demo,Grocery shopping,72.5,Food,2026-05-10,Weekly groceries
+3,demo,Bus pass,45.0,Transport,2026-05-05,

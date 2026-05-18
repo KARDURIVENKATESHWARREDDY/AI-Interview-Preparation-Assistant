@@ -1,4 +1,5 @@
 __pycache__/
 *.py[cod]
-.streamlit/
+.streamlit/secrets.toml
 data/users.json
+.env

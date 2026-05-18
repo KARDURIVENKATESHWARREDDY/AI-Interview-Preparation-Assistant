@@ -54,12 +54,35 @@ def tokenize(text: str) -> list[str]:
     return tokens
 
 
+def question_expansion(question: str, keywords: str = "") -> str:
+    """Combine question with keywords for fairer relevance scoring."""
+    parts = [_normalize(question)]
+    if keywords:
+        parts.append(_normalize(keywords.replace(",", " ")))
+    return " ".join(parts)
+
+
+def star_structure_score(answer: str) -> float:
+    """Detect STAR-style markers in behavioral answers (0–1)."""
+    if not answer:
+        return 0.0
+    text = answer.lower()
+    patterns = (
+        r"\b(situation|when|background|context)\b",
+        r"\b(task|goal|responsible|needed to)\b",
+        r"\b(i |we |led|built|implemented|designed)\b",
+        r"\b(result|outcome|impact|learned|improved)\b",
+    )
+    hits = sum(1 for p in patterns if re.search(p, text))
+    return hits / len(patterns)
+
+
 def relevance_score(question: str, answer: str) -> float:
     """TF-IDF cosine similarity between question and answer (0–1)."""
     if not (question or "").strip() or not (answer or "").strip():
         return 0.0
     docs = [_normalize(question), _normalize(answer)]
-    matrix = TfidfVectorizer().fit_transform(docs)
+    matrix = TfidfVectorizer(ngram_range=(1, 2), min_df=1).fit_transform(docs)
     sim = cosine_similarity(matrix[0:1], matrix[1:2])[0][0]
     return float(max(0.0, min(1.0, sim)))
 

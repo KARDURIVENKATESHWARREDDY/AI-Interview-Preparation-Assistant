@@ -3,10 +3,13 @@ from pathlib import Path
 
 import pandas as pd
 import streamlit as st
-from dotenv import load_dotenv
 
-# Load environment variables from .env file
-load_dotenv(Path(__file__).parent.parent / ".env")
+# Try to load environment variables from .env file (optional)
+try:
+    from dotenv import load_dotenv
+    load_dotenv(Path(__file__).parent.parent / ".env")
+except ImportError:
+    pass  # python-dotenv not installed, use system env vars instead
 
 from utils.auth import authenticate, ensure_default_users, register_user
 from utils.evaluator import evaluate_answer

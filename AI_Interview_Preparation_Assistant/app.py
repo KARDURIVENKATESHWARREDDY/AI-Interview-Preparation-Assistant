@@ -56,7 +56,6 @@ def init_session() -> None:
         "current_meta": None,
         "last_result": None,
         "answer_draft": "",
-        "theme_mode": "light",  # light or dark mode preference
     }
     for key, value in defaults.items():
         if key not in st.session_state:
@@ -83,17 +82,6 @@ def pick_question(df, category: str, difficulty: str) -> None:
 def render_user_sidebar() -> None:
     st.sidebar.divider()
     st.sidebar.caption(f"Signed in as **{st.session_state.username}**")
-    
-    # Theme toggle
-    theme_option = st.sidebar.radio(
-        "Theme",
-        ("Light", "Dark"),
-        index=0 if st.session_state.theme_mode == "light" else 1,
-        horizontal=True,
-        label_visibility="collapsed"
-    )
-    st.session_state.theme_mode = "light" if theme_option == "Light" else "dark"
-    
     if st.sidebar.button("Sign out", use_container_width=True):
         st.session_state.authenticated = False
         st.session_state.username = None
@@ -104,19 +92,6 @@ def render_user_sidebar() -> None:
 
 def render_login_page() -> None:
     ensure_default_users()
-    
-    # Theme toggle in sidebar (visible before login)
-    with st.sidebar:
-        st.markdown("### Settings")
-        theme_option = st.radio(
-            "Theme",
-            ("Light", "Dark"),
-            index=0 if st.session_state.theme_mode == "light" else 1,
-            horizontal=True,
-            label_visibility="collapsed"
-        )
-        st.session_state.theme_mode = "light" if theme_option == "Light" else "dark"
-    
     st.markdown(
         """
         <div class="app-header">

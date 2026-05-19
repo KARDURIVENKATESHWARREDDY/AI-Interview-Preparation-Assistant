@@ -98,48 +98,6 @@
     padding-top: 1.5rem;
 }
 
-/* ===== DARK MODE STYLES ===== */
-@media (prefers-color-scheme: dark) {
-    .app-header h1 {
-        color: #e2e8f0;
-    }
-
-    .app-header p {
-        color: #94a3b8;
-    }
-
-    .question-card {
-        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-        border-color: #334155;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    }
-
-    .question-card .label {
-        color: #818cf8;
-    }
-
-    .question-card .text {
-        color: #f1f5f9;
-    }
-
-    .feedback-box {
-        background: #1e293b;
-        border-color: #334155;
-    }
-
-    .feedback-box h4 {
-        color: #cbd5e1;
-    }
-
-    .feedback-box ul {
-        color: #a1a5b4;
-    }
-
-    [data-testid="stSidebar"] {
-        background-color: #0f172a;
-    }
-}
-
 
 /* Primary button accent */
 .stButton > button[kind="primary"] {

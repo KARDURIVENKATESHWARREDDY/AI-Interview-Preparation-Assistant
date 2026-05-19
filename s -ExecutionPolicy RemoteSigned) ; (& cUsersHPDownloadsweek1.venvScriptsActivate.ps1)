@@ -1,0 +1,50 @@
+[1mdiff --git a/AI_Interview_Preparation_Assistant/app.py b/AI_Interview_Preparation_Assistant/app.py[m
+[1mindex 96e545b..8dc210d 100644[m
+[1m--- a/AI_Interview_Preparation_Assistant/app.py[m
+[1m+++ b/AI_Interview_Preparation_Assistant/app.py[m
+[36m@@ -56,7 +56,6 @@[m [mdef init_session() -> None:[m
+         "current_meta": None,[m
+         "last_result": None,[m
+         "answer_draft": "",[m
+[31m-        "theme_mode": "light",  # light or dark mode preference[m
+     }[m
+     for key, value in defaults.items():[m
+         if key not in st.session_state:[m
+[36m@@ -83,17 +82,6 @@[m [mdef pick_question(df, category: str, difficulty: str) -> None:[m
+ def render_user_sidebar() -> None:[m
+     st.sidebar.divider()[m
+     st.sidebar.caption(f"Signed in as **{st.session_state.username}**")[m
+[31m-    [m
+[31m-    # Theme toggle[m
+[31m-    theme_option = st.sidebar.radio([m
+[31m-        "Theme",[m
+[31m-        ("Light", "Dark"),[m
+[31m-        index=0 if st.session_state.theme_mode == "light" else 1,[m
+[31m-        horizontal=True,[m
+[31m-        label_visibility="collapsed"[m
+[31m-    )[m
+[31m-    st.session_state.theme_mode = "light" if theme_option == "Light" else "dark"[m
+[31m-    [m
+     if st.sidebar.button("Sign out", use_container_width=True):[m
+         st.session_state.authenticated = False[m
+         st.session_state.username = None[m
+[36m@@ -104,19 +92,6 @@[m [mdef render_user_sidebar() -> None:[m
+ [m
+ def render_login_page() -> None:[m
+     ensure_default_users()[m
+[31m-    [m
+[31m-    # Theme toggle in sidebar (visible before login)[m
+[31m-    with st.sidebar:[m
+[31m-        st.markdown("### Settings")[m
+[31m-        theme_option = st.radio([m
+[31m-            "Theme",[m
+[31m-            ("Light", "Dark"),[m
+[31m-            index=0 if st.session_state.theme_mode == "light" else 1,[m
+[31m-            horizontal=True,[m
+[31m-            label_visibility="collapsed"[m
+[31m-        )[m
+[31m-        st.session_state.theme_mode = "light" if theme_option == "Light" else "dark"[m
+[31m-    [m
+     st.markdown([m
+         """[m
+         <div class="app-header">[m

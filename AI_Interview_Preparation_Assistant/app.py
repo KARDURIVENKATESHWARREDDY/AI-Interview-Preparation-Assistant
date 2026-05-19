@@ -3,6 +3,10 @@ from pathlib import Path
 
 import pandas as pd
 import streamlit as st
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv(Path(__file__).parent.parent / ".env")
 
 from utils.auth import authenticate, ensure_default_users, register_user
 from utils.evaluator import evaluate_answer

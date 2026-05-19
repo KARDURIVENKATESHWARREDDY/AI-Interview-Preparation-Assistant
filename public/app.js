@@ -7,6 +7,7 @@ let currentQuestion = null;
 
 const $ = (id) => document.getElementById(id);
 
+
 async function loadData() {
   const [u, q] = await Promise.all([
     fetch("/data/users.json").then((r) => r.json()),
